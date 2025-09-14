@@ -7,8 +7,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -18,7 +21,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.practice1_composebasics.ui.theme.Practice1ComposeBasicsTheme
@@ -55,7 +57,13 @@ fun Screen(modifier: Modifier = Modifier) {
 @Composable
 fun InsertImage(modifier: Modifier = Modifier) {
     val image = painterResource(R.drawable.bg_compose_background)
-    Box(modifier) {
+    val windowInsets = WindowInsets.systemBars
+
+    Box(
+        modifier = Modifier
+            .padding(windowInsets.asPaddingValues())
+            .then(modifier)
+    ) {
         Image(
             painter = image,
             contentDescription = null,
@@ -74,17 +82,13 @@ fun InsertText(modifier: Modifier = Modifier) {
         )
         Text(
             text = stringResource(R.string.article_para1),
-            modifier = Modifier.padding(start = 24.dp, end = 24.dp),
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp),
             textAlign = TextAlign.Justify
         )
         Text(
             text = stringResource(R.string.article_para2),
-            modifier = Modifier.padding(start = 24.dp, end = 24.dp),
+            modifier = Modifier.padding(16.dp),
             textAlign = TextAlign.Justify
         )
     }
 }
-
-@Preview
-@Composable
-fun ScreenPreview()
