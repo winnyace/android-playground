@@ -43,7 +43,7 @@ fun Screen(modifier: Modifier = Modifier) {
             .fillMaxSize()
             .then(modifier)
     ) {
-        Box(modifier) {
+        Box {
             Image (
                 painter = painterResource(id = R.drawable.ic_task_completed),
                 contentDescription = null
